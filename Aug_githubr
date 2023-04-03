@@ -1,0 +1,48 @@
+package Action_class;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class Demo3 
+{
+	public static void main(String[] args) throws InterruptedException 
+	{
+		//Parameter-I: Name of the Browser
+	 //Parameter-II:Path of chromeDriver.exe file
+		
+	System.setProperty("webdriver.chrome.driver", "D:\\chromedriver_win32\\chromedriver.exe");	
+		
+	//Create object of Chromedriver class and provide reference of WebDriver(upcasting)
+		WebDriver driver=new ChromeDriver();	
+		
+		//To open an application/To enter an URL
+		driver.get("https://www.flipkart.com/");
+		
+		//Wait
+		Thread.sleep(2000);
+		
+		driver.manage().window().maximize();
+		
+		//Wait
+		Thread.sleep(2000);
+		
+		//Close Hidden division pop-up
+		driver.findElement(By.xpath("//button[@class='_2KpZ6l _2doB4z']")).click();
+		
+			
+		//Step-I: Identify element and store it into an Object
+	WebElement	cart=driver.findElement(By.xpath("//a[@class='_3SkBxJ']"));
+
+		//Step-II:Create object of Actions Class
+	      Actions act=new Actions(driver);
+	      
+	    //Wait
+		Thread.sleep(2000);
+		
+		//Step-III:Call the method(To perform left click Action)
+		act.click(cart).perform();
+}
+}
